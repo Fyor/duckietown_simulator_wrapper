@@ -1,7 +1,7 @@
 # parameters
-ARG REPO_NAME="<REPO_NAME_HERE>"
-ARG DESCRIPTION="<DESCRIPTION_HERE>"
-ARG MAINTAINER="<YOUR_FULL_NAME> (<YOUR_EMAIL_ADDRESS>)"
+ARG REPO_NAME="duckietown_simulator_wrapper"
+ARG DESCRIPTION="An ROS wrapper for the Duckietown Simulator."
+ARG MAINTAINER="Fyor Klein Gunnewiek (fyorkg@gmail.com)"
 # pick an icon from: https://fontawesome.com/v4.7.0/icons/
 ARG ICON="cube"
 
@@ -63,7 +63,7 @@ COPY ./packages "${REPO_PATH}/packages"
 
 # build packages
 RUN . /opt/ros/${ROS_DISTRO}/setup.sh && \
-  catkin build \
+    catkin build \
     --workspace ${CATKIN_WS_DIR}/
 
 # install launcher scripts
