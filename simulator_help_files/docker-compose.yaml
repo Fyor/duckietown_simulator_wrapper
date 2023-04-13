@@ -7,7 +7,7 @@ services:
     restart: unless-stopped
     network_mode: host
     volumes:
-      - ~/Documents/Year3/thesis/simulator/duckietown_simulator_wrapper/simulator_help_files/data:/data
+      - ./data:/data
       
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       # avahi socket
@@ -26,7 +26,7 @@ services:
     # privileged: true
     command: dt-launcher-default
     volumes:
-      - ~/Documents/Year3/thesis/simulator/duckietown_simulator_wrapper/simulator_help_files/data:/data
+      - ./data:/data
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       # avahi socket
       - /var/run/avahi-daemon/socket:/var/run/avahi-daemon/socket
@@ -40,7 +40,7 @@ services:
     restart: unless-stopped
     network_mode: host
     volumes:
-      - ~/Documents/Year3/thesis/simulator/duckietown_simulator_wrapper/simulator_help_files/data:/data
+      - ./data:/data
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       # avahi socket
       - /var/run/avahi-daemon/socket:/var/run/avahi-daemon/socket
