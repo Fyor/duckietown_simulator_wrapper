@@ -1,0 +1,13 @@
+<package>
+    <name>simulator_wrapper</name>
+    <version>0.1.0</version>
+    <description>
+        This package contains a wrapper for the simulator,
+        which allows to use your duckiebot program in the simulator
+        as if it was running on the duckiebot.
+    </description>
+    <maintainer email="fyorkg@gmail.com">Fyor Klein Gunnewiek</maintainer>
+    <license>None</license>
+
+    <buildtool_depend>catkin</buildtool_depend>
+</package>
