@@ -51,10 +51,16 @@ ENV DT_LAUNCHER "${LAUNCHER}"
 COPY ./dependencies-apt.txt "${REPO_PATH}/"
 RUN dt-apt-install ${REPO_PATH}/dependencies-apt.txt
 
+# Stop pip from complaining about running as root
+ENV PIP_ROOT_USER_ACTION=ignore
+
 # install python3 dependencies
 ARG PIP_INDEX_URL="https://pypi.org/simple"
 ENV PIP_INDEX_URL=${PIP_INDEX_URL}
 RUN echo PIP_INDEX_URL=${PIP_INDEX_URL}
+RUN python3 -m pip install --upgrade pip
+RUN python3 -m pip install numpy==1.21.1
+RUN python3 -m pip install pyglet==1.5.11
 COPY ./dependencies-py3.* "${REPO_PATH}/"
 RUN python3 -m pip install  -r ${REPO_PATH}/dependencies-py3.txt
 
