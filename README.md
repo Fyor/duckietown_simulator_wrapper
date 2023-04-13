@@ -5,15 +5,9 @@ Run command
 
 `dts devel build -f`
 
-### Start related duckiebot containers
+### Start docker containers
 
 Run command `docker-compose up` from the directory where the file *docker-compose.yaml* resides.
-
-### Start docker container
-
-Run command
-
-`dts devel run`
 
 ### Monitor and publish rostopic
 
@@ -27,4 +21,5 @@ or
 
 To monitor image publisher, run command `rqt_image_view` and select topic */fakebot/camera_node/image/compressed* .
 
+// Doesn't seem to be working
 To change wheel velocity, run command `rostopic pub /fakebot/wheels_driver_node/wheels_cmd /fakebot/kinematics_node 'auto','X','Y'`. Replace *X* and *Y* with desired velocity of left and right wheel, respectively. 
