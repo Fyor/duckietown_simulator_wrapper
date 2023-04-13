@@ -1,0 +1,49 @@
+version: '3.2'
+services:
+
+  ros:
+    image: duckietown/dt-ros-commons:daffy-amd64
+    container_name: ros
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ~/Documents/Year3/thesis/simulator/duckietown_simulator_wrapper/simulator_help_files/data:/data
+      
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      # avahi socket
+      - /var/run/avahi-daemon/socket:/var/run/avahi-daemon/socket
+    environment:
+      - VEHICLE_NAME=fakebot
+      - DISPLAY=:33
+
+  core:
+    image: duckietown/duckietown_simulator_wrapper:v2-amd64
+    container_name: duckietown_simulator_wrapper
+    restart: unless-stopped
+    network_mode: host
+    extra_hosts:
+      - fakebot.local:127.0.0.1
+    # privileged: true
+    command: dt-launcher-default
+    volumes:
+      - ~/Documents/Year3/thesis/simulator/duckietown_simulator_wrapper/simulator_help_files/data:/data
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      # avahi socket
+      - /var/run/avahi-daemon/socket:/var/run/avahi-daemon/socket
+    environment:
+      - VEHICLE_NAME=fakebot
+      - DISPLAY=:33
+
+  car-interface:
+    image: duckietown/dt-car-interface:daffy-amd64
+    container_name: car-interface
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ~/Documents/Year3/thesis/simulator/duckietown_simulator_wrapper/simulator_help_files/data:/data
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      # avahi socket
+      - /var/run/avahi-daemon/socket:/var/run/avahi-daemon/socket
+    environment:
+      - VEHICLE_NAME=fakebot
+      - DISPLAY=:33
