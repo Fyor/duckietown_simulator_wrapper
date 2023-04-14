@@ -54,8 +54,10 @@ class ROSWrapper(DTROS):
         #rate.sleep()    
             
     def callback(self,wheelcommand):
-        rospy.loginfo("get wheel command")
-        self.action=[wheelcommand.vel_left,wheelcommand.vel_right]
+        wheels = [wheelcommand.vel_left,wheelcommand.vel_right]
+        if (self.action != wheels):
+            rospy.loginfo("Wheels to be set to: %s, %s", *wheels)
+            self.action=wheels
         
 
 if __name__ == '__main__':
